@@ -4,7 +4,7 @@
 
 command: "pmset -g batt | grep \"%\" | awk 'BEGINN { FS = \";\" };{ print $2,$3,$4 }' | sed -e 's/-I/I/' -e 's/-0//' -e 's/;//' -e 's/;//'"
 
-refreshFrequency: 10000
+refreshFrequency: 60000
 
 render: -> """
   <svg version="3.1" id="battery"
@@ -56,8 +56,8 @@ style: """
     scale = .9
     opacity = .7
 
-    bottom: 80px
-    left: 20px
+    bottom: 4px
+    right: -10px
     font-family: Helvetica Neue
     font-size: 1em * scale
 
