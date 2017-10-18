@@ -15,7 +15,7 @@ command: "tmutil status"
 
 # every 15 seconds is probably unnecessary but I'm a bit OCD
 
-refreshFrequency: 15000
+refreshFrequency: 30000
 
 render: (output)->"""
 	<div class='container'>
