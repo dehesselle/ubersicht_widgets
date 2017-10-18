@@ -11,7 +11,7 @@ command: """
 system_profiler SPBluetoothDataType | grep -E "Battery|Services" | sed "s/Services://g" | sed "s/Battery Level://g" | sed "s/Apple Wireless//g" | sed -e 's/^[ \t]*//' | paste -d" " - -
 """
 
-refreshFrequency: 20000
+refreshFrequency: 60000
 
 style: """
   // Change bar height
@@ -21,17 +21,18 @@ style: """
   widget-align = left
 
   // Position this where you want
-  top 700px
-  left 10px
+  bottom 60px
+  right 15px
 
   color #fff
   font-family Helvetica Neue
-  background rgba(#000, .5)
-  padding 10px 10px 15px
+  background rgba(#000, .0)
+  //padding 10px 10px 15px
+  padding 0px 0px 10px
   border-radius 5px
 
   .container
-    width: 300px
+    width: 171px
     text-align: widget-align
     position: relative
     clear: both
