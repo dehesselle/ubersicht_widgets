@@ -1,20 +1,22 @@
 command: "sysctl -n vm.loadavg|awk '{print $2}'"
-refreshFrequency: 2500
+refreshFrequency: 5000
 render: (_) -> """
-  <progress class='bar' value='0' max='6'></progress>
+  <progress class='bar' value='0' max='8'></progress>
 """
 
 update: (output, domEl) ->
   val = parseFloat(output,10)
+  if val < 2
+     val = 0.01
   $bar = $(domEl).find('.bar')
   $bar.removeClass 'urgent important high normal low'
   $bar.css width: $(domEl).height()
   $bar.attr 'value': val
   colorclass = switch
-    when val > 4 then 'urgent'
-    when val > 3 then 'important'
-    when val > 2 then 'high'
-    when val > 1 then 'normal'
+    when val > 7 then 'urgent'
+    when val > 4.5 then 'important'
+    when val > 3 then 'high'
+    when val > 1.5 then 'normal'
     else 'low'
   $bar.addClass colorclass
 
