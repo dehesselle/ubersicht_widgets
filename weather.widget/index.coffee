@@ -1,8 +1,8 @@
 options =
-  city          : "Troy"       # default city in case location detection fails
-  region        : "NY"              # default region in case location detection fails
-  units         : 'f'               # c for celcius. f for Fahrenheit
-  staticLocation: false             # set to true to disable autmatic location lookup
+  city          : "Aachen"       # default city in case location detection fails
+  region        : "NW"              # default region in case location detection fails
+  units         : 'c'               # c for celcius. f for Fahrenheit
+  staticLocation: true             # set to true to disable autmatic location lookup
 
 appearance =
   iconSet       : 'original'        # "original" for the original icons, or "yahoo" for yahoo icons
@@ -17,8 +17,8 @@ appearance =
 refreshFrequency: 600000            # Update every 10 minutes
 
 style: """
-  top  : 10px
-  right : 150px
+  top  : 0px
+  left : 20px
   width: #{appearance.baseFontSize * 8.57}px
 
   font-family: Helvetica Neue
@@ -184,7 +184,7 @@ update: (output, domEl) ->
   data    = JSON.parse(output)
   channel = data?.query?.results?.channel
 
-  if channel 
+  if channel
     delete localStorage.cachedOutput
     localStorage.setItem("cachedOutput", output)
   else
